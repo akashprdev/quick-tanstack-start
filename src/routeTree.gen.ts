@@ -13,8 +13,16 @@ import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
+<<<<<<< HEAD
 import { Route as ProtectedMyFeedsRouteImport } from './routes/_protected/my-feeds'
 import { Route as AuthenticatedLoginRouteImport } from './routes/_authenticated/login'
+=======
+import { Route as ProtectedSettingsRouteImport } from './routes/_protected/settings'
+import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
+import { Route as AuthenticatedLoginRouteImport } from './routes/_authenticated/login'
+import { Route as ProtectedProfileIndexRouteImport } from './routes/_protected/profile/index'
+import { Route as ProtectedProfileEditProfileRouteImport } from './routes/_protected/profile/edit-profile'
+>>>>>>> 8a697c1 (init)
 
 const ProtectedRoute = ProtectedRouteImport.update({
   id: '/_protected',
@@ -34,9 +42,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+<<<<<<< HEAD
 const ProtectedMyFeedsRoute = ProtectedMyFeedsRouteImport.update({
   id: '/my-feeds',
   path: '/my-feeds',
+=======
+const ProtectedSettingsRoute = ProtectedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+>>>>>>> 8a697c1 (init)
   getParentRoute: () => ProtectedRoute,
 } as any)
 const AuthenticatedLoginRoute = AuthenticatedLoginRouteImport.update({
@@ -44,18 +63,46 @@ const AuthenticatedLoginRoute = AuthenticatedLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+<<<<<<< HEAD
+=======
+const ProtectedProfileIndexRoute = ProtectedProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedProfileEditProfileRoute =
+  ProtectedProfileEditProfileRouteImport.update({
+    id: '/profile/edit-profile',
+    path: '/profile/edit-profile',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+>>>>>>> 8a697c1 (init)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/login': typeof AuthenticatedLoginRoute
+<<<<<<< HEAD
   '/my-feeds': typeof ProtectedMyFeedsRoute
+=======
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/settings': typeof ProtectedSettingsRoute
+  '/profile/edit-profile': typeof ProtectedProfileEditProfileRoute
+  '/profile/': typeof ProtectedProfileIndexRoute
+>>>>>>> 8a697c1 (init)
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/login': typeof AuthenticatedLoginRoute
+<<<<<<< HEAD
   '/my-feeds': typeof ProtectedMyFeedsRoute
+=======
+  '/dashboard': typeof ProtectedDashboardRoute
+  '/settings': typeof ProtectedSettingsRoute
+  '/profile/edit-profile': typeof ProtectedProfileEditProfileRoute
+  '/profile': typeof ProtectedProfileIndexRoute
+>>>>>>> 8a697c1 (init)
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -64,6 +111,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/_protected': typeof ProtectedRouteWithChildren
   '/_authenticated/login': typeof AuthenticatedLoginRoute
+<<<<<<< HEAD
   '/_protected/my-feeds': typeof ProtectedMyFeedsRoute
 }
 export interface FileRouteTypes {
@@ -71,6 +119,32 @@ export interface FileRouteTypes {
   fullPaths: '/' | '/$' | '/login' | '/my-feeds'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/$' | '/login' | '/my-feeds'
+=======
+  '/_protected/dashboard': typeof ProtectedDashboardRoute
+  '/_protected/settings': typeof ProtectedSettingsRoute
+  '/_protected/profile/edit-profile': typeof ProtectedProfileEditProfileRoute
+  '/_protected/profile/': typeof ProtectedProfileIndexRoute
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/login'
+    | '/dashboard'
+    | '/settings'
+    | '/profile/edit-profile'
+    | '/profile/'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/$'
+    | '/login'
+    | '/dashboard'
+    | '/settings'
+    | '/profile/edit-profile'
+    | '/profile'
+>>>>>>> 8a697c1 (init)
   id:
     | '__root__'
     | '/'
@@ -78,7 +152,14 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/_protected'
     | '/_authenticated/login'
+<<<<<<< HEAD
     | '/_protected/my-feeds'
+=======
+    | '/_protected/dashboard'
+    | '/_protected/settings'
+    | '/_protected/profile/edit-profile'
+    | '/_protected/profile/'
+>>>>>>> 8a697c1 (init)
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -118,11 +199,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+<<<<<<< HEAD
     '/_protected/my-feeds': {
       id: '/_protected/my-feeds'
       path: '/my-feeds'
       fullPath: '/my-feeds'
       preLoaderRoute: typeof ProtectedMyFeedsRouteImport
+=======
+    '/_protected/settings': {
+      id: '/_protected/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof ProtectedSettingsRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/dashboard': {
+      id: '/_protected/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof ProtectedDashboardRouteImport
+>>>>>>> 8a697c1 (init)
       parentRoute: typeof ProtectedRoute
     }
     '/_authenticated/login': {
@@ -132,6 +228,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedLoginRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+<<<<<<< HEAD
+=======
+    '/_protected/profile/': {
+      id: '/_protected/profile/'
+      path: '/profile'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof ProtectedProfileIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/profile/edit-profile': {
+      id: '/_protected/profile/edit-profile'
+      path: '/profile/edit-profile'
+      fullPath: '/profile/edit-profile'
+      preLoaderRoute: typeof ProtectedProfileEditProfileRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+>>>>>>> 8a697c1 (init)
   }
 }
 
@@ -148,11 +261,25 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 )
 
 interface ProtectedRouteChildren {
+<<<<<<< HEAD
   ProtectedMyFeedsRoute: typeof ProtectedMyFeedsRoute
 }
 
 const ProtectedRouteChildren: ProtectedRouteChildren = {
   ProtectedMyFeedsRoute: ProtectedMyFeedsRoute,
+=======
+  ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedSettingsRoute: typeof ProtectedSettingsRoute
+  ProtectedProfileEditProfileRoute: typeof ProtectedProfileEditProfileRoute
+  ProtectedProfileIndexRoute: typeof ProtectedProfileIndexRoute
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedSettingsRoute: ProtectedSettingsRoute,
+  ProtectedProfileEditProfileRoute: ProtectedProfileEditProfileRoute,
+  ProtectedProfileIndexRoute: ProtectedProfileIndexRoute,
+>>>>>>> 8a697c1 (init)
 }
 
 const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
