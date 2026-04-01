@@ -1,6 +1,6 @@
 # quick-tanstack-start
 
-A TanStack Start app with authentication, protected routes, and a shadcn-style UI.
+A TanStack Start app with authentication, protected routes, husky, eslint, prettier setup.
 
 ## Tech stack
 
@@ -8,7 +8,7 @@ A TanStack Start app with authentication, protected routes, and a shadcn-style U
 - **Routing**: [TanStack Router](https://tanstack.com/router) with file-based routing
 - **Data**: TanStack Query
 - **UI**: Tailwind CSS, Base UI, Radix UI, shadcn-style components, Lucide icons
-- **Tooling**: Biome (lint & format), Vitest (tests)
+- **Tooling**: Eslint (lint & format)
 
 ## Getting started
 
@@ -27,9 +27,8 @@ Runs the app at [http://localhost:3000](http://localhost:3000).
 | `pnpm build`   | Production build             |
 | `pnpm preview` | Preview production build     |
 | `pnpm test`    | Run tests (Vitest)           |
-| `pnpm lint`    | Lint (Biome)                 |
-| `pnpm format`  | Format (Biome)               |
-| `pnpm check`   | Lint + format check          |
+| `pnpm lint`    | Lint (eslint)                |
+| `pnpm format`  | Format (eslint)              |
 
 ## Project structure
 
@@ -94,30 +93,4 @@ export const Route = createFileRoute('/api/hello')({
 });
 ```
 
-## Data loading
-
-Use route loaders to fetch data before the route renders:
-
-```tsx
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const res = await fetch('https://swapi.dev/api/people');
-    return res.json();
-  },
-  component: PeopleComponent,
-});
-
-function PeopleComponent() {
-  const data = Route.useLoaderData();
-  // ...
-}
-```
-
-## Demo files
-
-Files prefixed with `demo` are optional starters and can be deleted.
-
-## Learn more
-
-- [TanStack](https://tanstack.com)
-- [TanStack Start](https://tanstack.com/start)
+- [Please provide feedback](https://www.linkedin.com/in/akash-pradhan/)
