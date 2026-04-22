@@ -1,6 +1,10 @@
-import React from 'react';
+import { ComponentExample } from '@/components/component-example';
 function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <ComponentExample />
+    </div>
+  );
 }
 
 export default Home;

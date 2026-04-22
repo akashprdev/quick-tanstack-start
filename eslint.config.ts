@@ -7,27 +7,35 @@ import { defineConfig } from 'eslint/config';
 import unusedImports from 'eslint-plugin-unused-imports';
 
 export default defineConfig([
+  js.configs.recommended,
+
+  ...tseslint.configs.recommended,
+
+  configPrettier,
+
   {
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    plugins: {
-      js,
-      prettier: pluginPrettier,
-      'unused-imports': unusedImports,
-    },
-    extends: ['js/recommended'],
     languageOptions: {
       globals: globals.browser,
     },
-  },
-
-  tseslint.configs.recommended,
-  {
+    plugins: {
+      prettier: pluginPrettier,
+      'unused-imports': unusedImports,
+    },
     rules: {
+      // React
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
       'react/no-unescaped-entities': 'off',
-      'prettier/prettier': 'error',
+
+      // TS
       '@typescript-eslint/no-explicit-any': 'off',
+
+      // Prettier
+      // 👇 change this
+      'prettier/prettier': 'warn',
+
+      // Unused imports
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',
@@ -40,6 +48,4 @@ export default defineConfig([
       ],
     },
   },
-
-  configPrettier,
 ]);
